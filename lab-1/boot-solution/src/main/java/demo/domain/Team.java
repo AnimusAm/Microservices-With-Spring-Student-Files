@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
+// JAXB annotation -> returns Team objects as XML
 public class Team {
 
 	@Id

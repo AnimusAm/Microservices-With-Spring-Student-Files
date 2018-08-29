@@ -9,15 +9,24 @@ import demo.domain.Team;
 import demo.repository.TeamRepository;
 
 @RestController
+// marks this service as REST - Spring boot invokes correct implementation of HttpMessageConverter
+// 		(based on requested format, and JARs on the classpath)
+// another option would be to leave this class as regular Controller, but to use @ResponseBody for each method
+// see: TeamAlterController.java
 public class TeamController {
 
-	@Autowired TeamRepository teamRepository;
-	
+	// autowire some DAO
+	@Autowired
+	TeamRepository teamRepository;
+
+	// notice that there is no view implementation -> rest returns structured data (JSON, XML, ...)
+	//	-> returns domain objects (to be exact, iterable of domain objects)
 	@GetMapping("/teams")
 	public Iterable<Team> getTeams() {
 		return teamRepository.findAll();
 	}
-	
+
+	//	-> returns domain object
 	@GetMapping("/teams/{id}")
 	public Team getTeam(@PathVariable Long id){
 		return teamRepository.findById(id).get();

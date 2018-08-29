@@ -16,10 +16,15 @@ import demo.domain.Team;
 import demo.repository.TeamRepository;
 
 @SpringBootApplication
+// Notice, main class does not extend SpringBootServletInitalizer
+//	This means it will be run:
+//		- as standard application
+// 		- with internal tomcat server that Spring Boot opinionatedly chose
+// Meaning - it doesn't request to be explicitly run on server (or external server run configuration to be defined)
+// SpringBootServletInitalizer has some useful features (methods that can be implemented customary, like - 'configure')
 public class Application {
 
 	@Autowired TeamRepository teamRepository;
-	
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

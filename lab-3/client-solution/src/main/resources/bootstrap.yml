@@ -1,8 +1,18 @@
+# This file is used to initialize 'bootstrap' type of context
+#   - this context initializes it self and uses this properties to get to the rest properties on config server
+# The other context is real ApplicationContext of this application
+#   - that initialization is made using regular application.properties/.yaml
+#   - configuration properties for this context initialization will be searched on config server
+#     by name <application-name-provided-here>-<profile>.<profile/yaml>
+#   - properties will be requested by: <spring.cloud.config.uri (http://server-url:port)>/<spring.application.name>/<profile>
+#     automatically by each client on it's startup
+
 # Properties active for ALL profiles:
 ---
 spring:
   application:
     name: lab-3-client
+    # specifies the name of the application - the name with which service will be registered at spring cloud config server
 server:
   port: 8002
 
@@ -15,3 +25,4 @@ spring:
   cloud:
     config:
       uri: http://localhost:8001
+      # url of the cloud config server
