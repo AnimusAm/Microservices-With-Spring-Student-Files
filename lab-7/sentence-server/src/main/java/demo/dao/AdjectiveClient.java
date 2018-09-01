@@ -10,5 +10,4 @@ public interface AdjectiveClient {
 
 	@GetMapping("/")
 	Word getWord();
-	
 }
