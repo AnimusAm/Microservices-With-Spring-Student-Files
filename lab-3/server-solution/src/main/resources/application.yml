@@ -1,10 +1,18 @@
 ---
 spring:
+  # added this so that profile doesn't need to be specified in run configuration
+  profiles:
+    active: native
   cloud:
     config:
       server:
         git:
           uri: https://github.com/kennyk65/Microservices-With-Spring-Student-Files
+          # uri: https://github.com/AnimusAm/Microservices-With-Spring-Student-Files/tree/02_changes_in_example_code_from_lab_06.git
+          # didn't make this work -> think it's an issue with repository privacy, but can't confirm (https://www.baeldung.com/spring-cloud-configuration)
+          #   - baypass is to use local repository copy:
+          #       1. run server with 'native' profile (it will use classpath because that+s how it's configured)
+          #       2. add config files in local folder under server repository (resources/local-repository is used in this case)
           searchPaths: ConfigData
         # "native" is used when the native profile is active, for local tests with a classpath repo:
         native:

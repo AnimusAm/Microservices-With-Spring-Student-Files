@@ -1,0 +1,7 @@
+This file explains why change in lab-3 was made after:
+- while searching the problem for why hystrix monitoring doesn't work in lab-7
+    - found out that all labs are still working with config server using remote github as environment repository - but the one originally used by author
+    (since I never bothered to change it), and changing it is not all that easy since it seems to be an issue with private repositories.
+    - for that reason I used local repository and that's why this lab was changed later
+
+    
